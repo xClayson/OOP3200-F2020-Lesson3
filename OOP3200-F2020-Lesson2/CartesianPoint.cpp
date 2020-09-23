@@ -4,7 +4,7 @@
 #include <cmath>			// sqrt()
 
 // constructor for CartesianPoint
-CartesianPoint::CartesianPoint(int x, int y): m_X(x), m_Y(y)
+CartesianPoint::CartesianPoint(const int x, const int y): m_X(x), m_Y(y)
 {
 	//SetPoint(x, y);
 }
@@ -20,8 +20,8 @@ CartesianPoint::CartesianPoint(const CartesianPoint & point2)
 CartesianPoint CartesianPoint::operator+(const CartesianPoint& point2) const
 {
 	CartesianPoint tempPoint;
-	tempPoint.SetX(*this).GetX() + point2.GetX());
-	tempPoint.SetY(*this).GetY() + point2.GetY());
+	tempPoint.SetX((*this).GetX() + point2.GetX());
+	tempPoint.SetY((*this).GetY() + point2.GetY());
 	
 	return tempPoint;
 }
@@ -41,6 +41,21 @@ double CartesianPoint::operator-(const CartesianPoint& pointTo) const
 bool CartesianPoint::operator==(const CartesianPoint& other_point) const
 {
 	return ((GetX() == other_point.GetX()) && (GetY() == other_point.GetY()));
+}
+
+std::ostream& operator<<(std::ostream& out, const CartesianPoint& point)
+{
+	out << point.ToString();
+	return out;
+}
+
+std::istream& operator>>(std::istream& in, CartesianPoint& point)
+{
+	in >> point.m_X;
+	in.ignore();
+	in >> point.m_Y;
+
+	return in;
 }
 
 void CartesianPoint::SetPoint(int x, int y)
@@ -104,17 +119,3 @@ std::string CartesianPoint::ToString() const
 	return strOut.str();
 }
 
-std::ostream& operator<<(std::ostream& out, const CartesianPoint& point)
-{
-	out << point.ToString();
-	return out;
-}
-
-std::istream& operator>>(std::istream& in, CartesianPoint& point)
-{
-	in >> point.m_X;
-	in.ignore();
-	in >> point.m_Y;
-
-	return in;
-}

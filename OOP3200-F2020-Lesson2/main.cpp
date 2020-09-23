@@ -9,6 +9,7 @@
 
 #include <iostream> 		// cin, cout
 #include <iomanip>			// fixed, setprecision()
+
 #include "CartesianPoint.h"
 #include "MyConsoleInput.h" // ConsoleInput::ReadInteger()
 

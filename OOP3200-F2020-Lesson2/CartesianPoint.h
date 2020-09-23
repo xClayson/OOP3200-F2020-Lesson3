@@ -2,8 +2,6 @@
 #ifndef __CARTESIAN_POINT__
 #define __CARTESIAN_POINT__
 
-#endif /* defined */
-
 #include <string>
 class CartesianPoint
 {
@@ -23,8 +21,8 @@ public:
 	bool operator==(const CartesianPoint& other_point) const;
 
 	//friend overloads
-	friend std::ostream& operator<< (std::ostream& out, const CartesianPoint point);
-	friend std::istream& operator>> (std::istream& in, CartesianPoint& point);
+	friend std::ostream& operator<<(std::ostream& out, const CartesianPoint& point);
+	friend std::istream& operator>>(std::istream& in, CartesianPoint& point);
 
 	//Accessors
 	// get x
@@ -45,7 +43,7 @@ public:
 
 
 	// get the distance between this point and a second point
-	double GetDistanceTo(CartesianPoint pointTo) const;
+	double GetDistanceTo(const CartesianPoint& pointTo) const;
 
 	// convert the obj to a string
 	std::string ToString() const;
@@ -56,3 +54,5 @@ private:
 	int m_X; // x-axis (horizontal) value
 	int m_Y;  // y-axis (vertical) value
 };
+
+#endif /* defined */
