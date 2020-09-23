@@ -9,15 +9,21 @@ class CartesianPoint
 {
 public:
 
-
+	//Constructor
 	CartesianPoint(int x = 1, int y = 1);
+	~CartesianPoint();
 
+	/* operator overloads*/
+	double operator-(const CartesianPoint& pointTo) const;
+
+	//Accessors
 	// get x
-	int GetX();
+	int GetX() const; 
 
 	// get y
-	int GetY();
+	int GetY() const;
 
+	//Mutators
 	// set x
 	void SetX(int x);
 
